@@ -9,16 +9,6 @@ Ideal for organizing and simplifying large collections of PDFs.
 - Simple and user-friendly graphical interface using Tkinter.
 - Fast and reliable processing of PDF files.
 
-## Requirements
-- **Python 3.6+**
-- **Libraries**:
-  - PyPDF2
-  - Tkinter (pre-installed with Python on most systems)
-
-Install the required library with the following command:
-```bash
-pip install PyPDF2
-
 ## How to Use
 1. Clone this repository to your local machine:
    ```bash
@@ -37,9 +27,9 @@ python pdf_merger.py
     Remove the original PDFs after merging.
     Notify you when the process is complete.
 
-
-## Example
+Example.
 Imagine you have the following directory structure:
+
 MainFolder/
 │
 ├── Subfolder1/
@@ -52,6 +42,7 @@ MainFolder/
 
 
 After running the script:
+
 MainFolder/
 │
 ├── Subfolder1/
@@ -60,7 +51,7 @@ MainFolder/
 ├── Subfolder2/
 │   ├── combined.pdf
 
-
+   
 ## License
 - This project is licensed under the **MIT License**.
 - For more details, see the [LICENSE](LICENSE) file included in this repository.
@@ -82,7 +73,7 @@ MainFolder/
      git push origin feature-name
      ```
   5. Open a **Pull Request** to propose your changes.
-
-## Author
+ 
+  ## Author
 - This project was developed by **Enrique Caicedo**.
 - Connect with me on GitHub: [jenriquecdev](https://github.com/jenriquecdev).
