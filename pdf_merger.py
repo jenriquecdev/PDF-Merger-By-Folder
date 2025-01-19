@@ -2,65 +2,65 @@ import os
 from tkinter import Tk, Button, Label, filedialog, messagebox
 from PyPDF2 import PdfMerger
 
-def combinar_pdfs_por_carpeta(ruta_principal):
+def merge_pdfs_by_folder(main_directory):
     """
-    Combina todos los archivos PDF en cada subcarpeta de la ruta principal.
-    Deja un único archivo combinado por carpeta y elimina los originales.
+    Combines all PDF files in each subfolder of the main directory.
+    Creates a single combined file per folder and deletes the original files.
     """
-    for carpeta, _, archivos in os.walk(ruta_principal):
-        # Filtrar solo los archivos PDF
-        pdfs = [os.path.join(carpeta, archivo) for archivo in archivos if archivo.endswith('.pdf')]
+    for folder, _, files in os.walk(main_directory):
+        # Filter only PDF files
+        pdfs = [os.path.join(folder, file) for file in files if file.endswith('.pdf')]
         
         if not pdfs:
-            continue  # Saltar si no hay PDFs en la carpeta
+            continue  # Skip if no PDFs in the folder
         
-        # Nombre del archivo combinado
-        nombre_combinado = os.path.join(carpeta, "combinado.pdf")
+        # Name of the combined file
+        combined_filename = os.path.join(folder, "combined.pdf")
         
-        # Combinar PDFs
+        # Merge PDFs
         merger = PdfMerger()
         for pdf in pdfs:
             merger.append(pdf)
         
-        merger.write(nombre_combinado)
+        merger.write(combined_filename)
         merger.close()
         
-        # Eliminar los PDFs originales
+        # Delete the original PDFs
         for pdf in pdfs:
             os.remove(pdf)
         
-    messagebox.showinfo("Proceso Completado", f"Los PDF se han combinado exitosamente en {ruta_principal}")
+    messagebox.showinfo("Process Completed", f"PDFs have been successfully merged in {main_directory}")
 
-def seleccionar_carpeta():
+def select_directory():
     """
-    Abre un cuadro de diálogo para que el usuario seleccione la carpeta principal.
+    Opens a dialog box for the user to select the main directory.
     """
-    ruta_carpeta = filedialog.askdirectory(title="Selecciona la carpeta principal")
-    if ruta_carpeta:
-        label_carpeta.config(text=f"Carpeta seleccionada: {ruta_carpeta}")
-        boton_combinar.config(state="normal")  # Habilitar el botón de combinar
-        boton_combinar.config(command=lambda: combinar_pdfs_por_carpeta(ruta_carpeta))
+    selected_directory = filedialog.askdirectory(title="Select the main directory")
+    if selected_directory:
+        label_directory.config(text=f"Selected directory: {selected_directory}")
+        button_merge.config(state="normal")  # Enable the merge button
+        button_merge.config(command=lambda: merge_pdfs_by_folder(selected_directory))
 
-# Crear la ventana principal
-ventana = Tk()
-ventana.title("Combinar PDFs por Carpeta")
-ventana.geometry("500x200")
+# Create the main window
+window = Tk()
+window.title("Merge PDFs by Folder")
+window.geometry("500x200")
 
-# Etiqueta de instrucciones
-label_instrucciones = Label(ventana, text="Selecciona una carpeta principal para combinar los PDFs:", font=("Arial", 12))
-label_instrucciones.pack(pady=10)
+# Instruction label
+label_instructions = Label(window, text="Select a main directory to merge PDFs:", font=("Arial", 12))
+label_instructions.pack(pady=10)
 
-# Botón para seleccionar carpeta
-boton_seleccionar = Button(ventana, text="Seleccionar Carpeta", command=seleccionar_carpeta, font=("Arial", 10))
-boton_seleccionar.pack(pady=10)
+# Button to select directory
+button_select = Button(window, text="Select Directory", command=select_directory, font=("Arial", 10))
+button_select.pack(pady=10)
 
-# Etiqueta para mostrar la carpeta seleccionada
-label_carpeta = Label(ventana, text="No se ha seleccionado ninguna carpeta", font=("Arial", 10), fg="gray")
-label_carpeta.pack(pady=10)
+# Label to display the selected directory
+label_directory = Label(window, text="No directory selected", font=("Arial", 10), fg="gray")
+label_directory.pack(pady=10)
 
-# Botón para combinar PDFs
-boton_combinar = Button(ventana, text="Combinar PDFs", state="disabled", font=("Arial", 10))
-boton_combinar.pack(pady=10)
+# Button to merge PDFs
+button_merge = Button(window, text="Merge PDFs", state="disabled", font=("Arial", 10))
+button_merge.pack(pady=10)
 
-# Ejecutar la ventana
-ventana.mainloop()
+# Run the window
+window.mainloop()
