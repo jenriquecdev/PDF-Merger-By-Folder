@@ -37,6 +37,7 @@ python pdf_merger.py
     Remove the original PDFs after merging.
     Notify you when the process is complete.
 
+
 ## Example
 Imagine you have the following directory structure:
 MainFolder/
@@ -68,4 +69,3 @@ Contributions are welcome! Please fork the repository and create a pull request 
 
 ## Author
 Developed by **Enrique Caicedo** ([GitHub Profile](https://github.com/jenriquecdev)).
-
