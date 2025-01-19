@@ -62,10 +62,27 @@ MainFolder/
 
 
 ## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+- This project is licensed under the **MIT License**.
+- For more details, see the [LICENSE](LICENSE) file included in this repository.
 
 ## Contributing
-Contributions are welcome! Please fork the repository and create a pull request for any changes.
+- Contributions are highly encouraged and appreciated!
+- To contribute:
+  1. **Fork** this repository to your GitHub account.
+  2. Create a new branch for your changes:
+     ```bash
+     git checkout -b feature-name
+     ```
+  3. Make your changes and commit them:
+     ```bash
+     git commit -m "Describe your changes here"
+     ```
+  4. Push the branch to your fork:
+     ```bash
+     git push origin feature-name
+     ```
+  5. Open a **Pull Request** to propose your changes.
 
 ## Author
-Developed by **Enrique Caicedo** ([GitHub Profile](https://github.com/jenriquecdev)).
+- This project was developed by **Enrique Caicedo**.
+- Connect with me on GitHub: [jenriquecdev](https://github.com/jenriquecdev).
